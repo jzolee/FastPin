@@ -5,6 +5,7 @@ The active low level can be set as both an input and an output.
 Debounce is possible in case of input.
 
 ### Usage
+```
 FastPin(const uint8_t pin, const uint8_t mode, const bool active_low = false) constructor, initialize FastPin object with optional active low setting.
 
 void on() makes the pin high or low if in active low mode
@@ -12,7 +13,7 @@ void off() makes the pin low or high if in active low mode
 bool read() returns the state of the pin according to the active low setting
 void set_debounce(const uint32_t times) setting the debounce test number
 bool state() returns the debounced state of the pin according to the active low setting
-
+```
 ### Example
 ```
 #include <Arduino.h>
