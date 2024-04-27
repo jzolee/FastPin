@@ -31,7 +31,7 @@ void setup()
 
 void loop()
 {
-    if (button.state())
+    if (button.debounced_state())
         led.on();
     else
         led.off();
