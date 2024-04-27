@@ -13,8 +13,8 @@ public:
     bool read() { return REG_GET_BIT(_r_reg, _bit); }
     bool state() { return read() ? (_inverse ? false : true) : (_inverse ? true : false); }
     void set_debounce(const uint32_t times) { _times = times; }
-    bool read_debounce();
-    bool state_debounce() { return read_debounce() ? (_inverse ? false : true) : (_inverse ? true : false); }
+    bool debounced_read();
+    bool debounced_state() { return debounced_read() ? (_inverse ? false : true) : (_inverse ? true : false); }
 
 private:
     uint32_t _s_reg;
@@ -47,7 +47,7 @@ FastPin::FastPin(const uint8_t pin, const uint8_t mode, const bool active_low)
     }
 }
 
-inline bool FastPin::read_debounce()
+inline bool FastPin::debounced_read()
 {
     if (read()) {
         if (_counter < _times)
