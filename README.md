@@ -16,7 +16,7 @@ void on() makes the pin high or low if in active low mode
 void off() makes the pin low or high if in active low mode
 bool read() returns the state of the pin
 bool state() returns the state of the pin according to the active low setting
-void set_debounce(const uint32_t times) setting the debounce test number
+void set_debounce(const uint32_t times) setting the debounce counter
 bool debounced_read() returns the debounced state of the pin
 bool debounced_state() returns the debounced state of the pin according to the active low setting
 ```
