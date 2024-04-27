@@ -6,7 +6,9 @@ Debounce is possible in case of input.
 
 ### Usage
 ```
-FastPin(const uint8_t pin, const uint8_t mode, const bool active_low = false) constructor, initialize FastPin object with optional active low setting.
+constructor, initialize FastPin object with optional active low setting:
+
+FastPin(const uint8_t pin, const uint8_t mode, const bool active_low = false)
 
 void on() makes the pin high or low if in active low mode
 void off() makes the pin low or high if in active low mode
