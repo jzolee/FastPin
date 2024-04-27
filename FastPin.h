@@ -6,15 +6,15 @@ class FastPin {
 public:
     FastPin(const uint8_t pin, const uint8_t mode, const bool active_low = false);
 
-    void high() { REG_WRITE(_s_reg, _bit); }
-    void low() { REG_WRITE(_c_reg, _bit); }
+    void high() { (REG_WRITE(_s_reg, _bit)); }
+    void low() { (REG_WRITE(_c_reg, _bit)); }
     void on() { _inverse ? low() : high(); }
     void off() { _inverse ? high() : low(); }
-    bool read() { return REG_GET_BIT(_r_reg, _bit); }
-    bool state() { return read() ? (_inverse ? false : true) : (_inverse ? true : false); }
     void set_debounce(const uint32_t times) { _times = times; }
+    bool read() { return (REG_GET_BIT(_r_reg, _bit)); }
+    bool state() { return read() ^ _inverse; } //? (_inverse ? false : true) : (_inverse ? true : false); }
     bool debounced_read();
-    bool debounced_state() { return debounced_read() ? (_inverse ? false : true) : (_inverse ? true : false); }
+    bool debounced_state() { return debounced_read() ^ _inverse; }
 
 private:
     uint32_t _s_reg;
@@ -24,7 +24,7 @@ private:
 
     uint32_t _times = 0;
     uint32_t _counter = 0;
-    bool _r_d = false;
+    bool _debounced = false;
     bool _inverse = false;
 };
 
@@ -53,12 +53,12 @@ inline bool FastPin::debounced_read()
         if (_counter < _times)
             _counter++;
         else
-            _r_d = true;
+            _debounced = true;
     } else {
         if (_counter > 0)
             _counter--;
         else
-            _r_d = false;
+            _debounced = false;
     }
-    return _r_d;
+    return _debounced;
 }
