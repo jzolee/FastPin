@@ -4,7 +4,7 @@
 // FastPin(const uint8_t pin, const uint8_t mode, const bool active_low = false);
 
 FastPin button(18, INPUT_PULLUP, true);
-FastPin led(36, OUTPUT);
+FastPin led(17, OUTPUT);
 
 void setup()
 {
