@@ -1,7 +1,7 @@
 # FastPin
 Fast digital pin reading and writing to ESP32 on Arduino platform.
 Alternative to pinMode, digitalWrite and digitalRead.
-The active low level can be set as both an input and an output.
+The active low level can be set for both input and output.
 Debounce is possible in case of input.
 
 ### Usage
