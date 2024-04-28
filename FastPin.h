@@ -66,4 +66,4 @@ inline bool FastPin::debounced_read()
     }
 
     return _debounced;
-}
+} //
