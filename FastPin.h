@@ -49,16 +49,21 @@ FastPin::FastPin(const uint8_t pin, const uint8_t mode, const bool active_low)
 
 inline bool FastPin::debounced_read()
 {
-    if (read()) {
-        if (_counter < _times)
-            _counter++;
-        else
-            _debounced = true;
-    } else {
-        if (_counter > 0)
-            _counter--;
-        else
-            _debounced = false;
+    bool r = read();
+
+    if (r ^ _debounced) {
+        if (r) {
+            if (_counter < _times)
+                _counter++;
+            else
+                _debounced = true;
+        } else {
+            if (_counter)
+                _counter--;
+            else
+                _debounced = false;
+        }
     }
+
     return _debounced;
 }
