@@ -12,6 +12,7 @@ FastPin(const uint8_t pin, const uint8_t mode, const bool active_low = false)
 
 void high() makes the pin high
 void low() makes the pin low
+void write(const bool level)
 void on() makes the pin high or low if in active low mode
 void off() makes the pin low or high if in active low mode
 bool read() returns the state of the pin
