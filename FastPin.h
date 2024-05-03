@@ -8,6 +8,7 @@ public:
 
     void high() { (REG_WRITE(_s_reg, _bit)); }
     void low() { (REG_WRITE(_c_reg, _bit)); }
+    void write(const bool level) { level ? high() : low(); }
     void on() { _active_low ? low() : high(); }
     void off() { _active_low ? high() : low(); }
     void set_debounce(const uint32_t times) { _times = times; }
